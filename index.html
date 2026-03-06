@@ -1,348 +1,486 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title> Claim Your Wingstop Reward </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#020F08">
+<title>Claim Your $500 Wingstop Gift Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green:      #006341;
+    --green-dark: #004D32;
+    --green-light:#00845A;
+    --gold:       #FFB81C;
+    --gold-light: #FFD84D;
+    --gold-dark:  #D9920A;
+    --dark:       #020F08;
+  }
 
-  <style>
-    @font-face {
-      font-family: 'Horizon Type';
-      src: url('acherus/Horizon Type - AcherusFeral-Bold.otf') format('opentype');
-      font-weight: 900;
-      font-style: normal;
-      font-display: swap;
-    }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; }
+  html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
 
-    body {
-      font-family: 'Horizon Type', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-weight: 900;
-      background: #fcfcfc;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      padding: 30px 0;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      color: #111;
-    }
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--dark);
+    color: #fff;
+    overflow-x: hidden;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    /* safe area for iPhone notch/home indicator */
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 
-    .logo { 
-      width: 210px; 
-      margin-bottom: 16px; 
-      object-fit: contain;
-    }
+  body::before {
+    content:''; position:fixed; inset:0;
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 100%, rgba(0,99,65,.45) 0%, transparent 70%),
+      radial-gradient(ellipse 35% 35% at 15% 85%, rgba(255,184,28,.12) 0%, transparent 60%),
+      radial-gradient(ellipse 35% 35% at 85% 85%, rgba(255,184,28,.12) 0%, transparent 60%),
+      linear-gradient(180deg, #020F08 0%, #031408 50%, #041A0C 100%);
+    z-index:0; pointer-events:none;
+  }
 
-    .title {
-      font-family: 'Horizon Type', sans-serif;
-      font-size: 52px;
-      line-height: 1.15;
-      color: #111;
-      text-shadow: 0 4px 18px rgba(0,166,81,0.18), 0 1px 0 #fff;
-      margin-bottom: 40px;
-      text-align: center;
-      letter-spacing: 1.5px;
-    }
-    .title .line1 { display: block; }
-    .title .line2 { display: block; margin-left: 2px; }
+  body::after {
+    content:''; position:fixed; inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+    z-index:0; pointer-events:none;
+  }
 
-    .btn {
-      font-family: 'Horizon Type', sans-serif;
-      background: #00A651;
-      color: #fff;
-      font-size: 22px;
-      padding: 14px 48px;
-      border: none;
-      border-radius: 50px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.22);
-      cursor: pointer;
-      transition: transform .18s ease, box-shadow .18s ease;
-      margin-bottom: 50px;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .btn:hover { 
-      transform: translateY(-3px); 
-      box-shadow: 0 10px 25px rgba(0,166,81,0.35); 
-    }
+  .wrap {
+    position:relative; z-index:1;
+    width:100%; max-width:600px;
+    margin:0 auto;
+  }
 
-    .steps {
-      background: #fff;
-      width: 88%;
-      max-width: 420px;
-      padding: 32px 28px;
-      border-radius: 20px;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.16);
-      font-size: 22.5px;
-      color: #222;
-      margin-bottom: 50px;
-      text-align: left;
-    }
-    .step { 
-      display: flex; 
-      align-items: center;
-      margin-bottom: 28px;
-    }
-    .step:last-child { margin-bottom: 0; }
-    
-    .num {
-      background: #00A651;
-      color: #fff;
-      width: 42px;
-      height: 42px;
-      border-radius: 48%;
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      font-size: 26px; 
-      margin-right: 18px; 
-      flex-shrink: 0;
-    }
-    .bold { font-weight: 900; }
-    .amount { color: #00A651; font-weight: 900; }
+  /* ── TOP BAR ── */
+  .top-bar {
+    background: linear-gradient(90deg, var(--green-dark), var(--green), var(--green-dark));
+    background-size: 200%;
+    animation: bar-slide 5s linear infinite;
+    text-align:center;
+    padding: 10px 16px;
+    padding-top: calc(10px + env(safe-area-inset-top));
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight:900; font-size:clamp(11px,3vw,13px); letter-spacing:2px;
+    text-transform:uppercase; color:#fff;
+    position:sticky; top:0; z-index:100;
+    border-bottom: 2px solid var(--gold);
+    line-height:1.3;
+  }
+  @keyframes bar-slide { 0%{background-position:0%} 100%{background-position:200%} }
+  .top-bar .gold { color: var(--gold); }
 
-    .giftcard {
-      width: 88%;
-      max-width: 420px;
-      border-radius: 18px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.18);
-      margin-bottom: 40px;
-      display: block;
-    }
+  /* ── TIMER BAR ── */
+  .timer-bar {
+    display:flex; align-items:center; justify-content:center;
+    flex-wrap:wrap; gap:8px;
+    padding:12px 16px;
+    background: rgba(255,184,28,.06);
+    border-bottom: 1px solid rgba(255,184,28,.18);
+  }
+  .timer-label {
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700; font-size:clamp(11px,3vw,13px);
+    text-transform:uppercase; letter-spacing:1.5px;
+    color:rgba(255,255,255,.55);
+    white-space:nowrap;
+  }
+  .timer-display {
+    font-family:'Bebas Neue',cursive;
+    font-size:clamp(26px,7vw,32px); letter-spacing:3px; line-height:1;
+    color:var(--gold);
+    text-shadow:0 0 22px rgba(255,184,28,.65);
+    white-space:nowrap;
+  }
+  .blink-dot {
+    width:8px; height:8px; border-radius:50%;
+    background:var(--gold); flex-shrink:0;
+    animation:blink 1s ease-in-out infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.15} }
 
-    .warning {
-      background: #fff8e1;
-      color: #b87400;
-      padding: 16px;
-      border-radius: 12px;
-      font-size: 15px;
-      font-weight: 900;
-      width: 88%;
-      max-width: 420px;
-      text-align: center;
-    }
+  /* ── HERO ── */
+  .hero {
+    text-align:center;
+    padding: clamp(24px,6vw,40px) 16px 0;
+  }
 
-    /* FAQ Section */
-    .faq-section {
-      width: 88%;
-      max-width: 420px;
-      margin: 50px 0 40px;
-    }
+  .wingstop-logo {
+    width: clamp(130px,40vw,200px);
+    height:auto; display:block;
+    margin:0 auto 16px;
+    filter: drop-shadow(0 4px 18px rgba(0,99,65,.7)) brightness(1.05);
+    animation:float 4.5s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 
-    .faq-header {
-      text-align: center;
-      margin-bottom: 24px;
-    }
+  .hero-badge {
+    display:inline-block;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color:var(--dark);
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900; font-size:clamp(10px,2.5vw,12px); letter-spacing:2.5px;
+    text-transform:uppercase; padding:5px 14px; border-radius:2px;
+    margin-bottom:14px;
+    animation:badge-glow 3s ease-in-out infinite;
+    white-space:nowrap;
+  }
+  @keyframes badge-glow {
+    0%,100%{box-shadow:0 0 0 rgba(255,184,28,0)}
+    50%{box-shadow:0 0 28px rgba(255,184,28,.6)}
+  }
 
-    .faq-header h2 {
-      font-family: 'Horizon Type', sans-serif;
-      font-size: 28px;
-      font-weight: 900;
-      font-style: italic;
-      color: #111;
-      letter-spacing: 1px;
-    }
+  .hero-title {
+    font-family:'Bebas Neue',cursive;
+    font-size: clamp(44px,12vw,90px); line-height:.92;
+    background: linear-gradient(180deg,#fff 0%,rgba(255,255,255,.72) 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    margin-bottom:4px;
+  }
+  .hero-amount {
+    display:block;
+    font-family:'Bebas Neue',cursive;
+    font-size: clamp(72px,20vw,148px); line-height:.85;
+    background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 45%, var(--gold-dark) 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    filter: drop-shadow(0 6px 32px rgba(255,184,28,.45));
+    margin-bottom:4px;
+  }
+  .hero-subtitle {
+    font-family:'Bebas Neue',cursive;
+    font-size: clamp(22px,6vw,50px);
+    color: var(--green-light); letter-spacing:4px; margin-bottom:24px;
+    text-shadow:0 0 20px rgba(0,132,90,.5);
+  }
 
-    .faq-item {
-      background: #fff;
-      border-radius: 12px;
-      margin-bottom: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+  /* ── CARD ── */
+  .card-wrap {
+    position:relative;
+    width: clamp(260px, 82vw, 370px);
+    margin:0 auto 20px;
+  }
+  .card-halo {
+    position:absolute; inset:-20px;
+    background:radial-gradient(ellipse, rgba(255,184,28,.22) 0%, transparent 70%);
+    border-radius:50%;
+    animation:halo 2.8s ease-in-out infinite;
+  }
+  @keyframes halo { 0%,100%{transform:scale(1);opacity:.7} 50%{transform:scale(1.06);opacity:1} }
+  .card-img {
+    width:100%; height:auto; display:block;
+    border-radius:14px; position:relative; z-index:1;
+    filter:drop-shadow(0 18px 36px rgba(0,0,0,.65));
+    transition:transform .3s ease;
+  }
+  @media (hover:hover) {
+    .card-img:hover { transform:scale(1.03) rotate(-1deg); }
+  }
 
-    .faq-question {
-      width: 100%;
-      padding: 18px 20px;
-      background: none;
-      border: none;
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      font-family: 'Horizon Type', sans-serif;
-      transition: background 0.2s ease;
-    }
+  /* ── LIVE COUNTER ── */
+  .live-counter {
+    text-align:center; padding:12px 16px;
+    background:rgba(0,99,65,.12); border:1px solid rgba(0,99,65,.3);
+    border-radius:8px; margin:0 16px 18px;
+  }
+  .live-counter-text {
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700; font-size:clamp(13px,3.5vw,15px); letter-spacing:1px; color:var(--gold);
+  }
+  .live-counter-text strong {
+    font-family:'Bebas Neue',cursive; font-size:clamp(20px,5vw,26px); letter-spacing:2px;
+  }
 
-    .faq-question:hover {
-      background: #f0faf4;
-    }
+  /* ── PROGRESS ── */
+  .progress-wrap { padding:0 16px 20px; }
+  .progress-labels {
+    display:flex; justify-content:space-between;
+    font-size:clamp(10px,2.5vw,12px); font-weight:700;
+    text-transform:uppercase; letter-spacing:1px;
+    color:rgba(255,255,255,.45); margin-bottom:8px;
+  }
+  .progress-labels span:last-child { color:var(--gold); }
+  .progress-track { height:8px; background:rgba(255,255,255,.08); border-radius:4px; overflow:hidden; }
+  .progress-fill {
+    height:100%; width:0;
+    background:linear-gradient(90deg, var(--green), var(--gold));
+    border-radius:4px; animation:fill-bar 1.6s ease .4s forwards; position:relative;
+  }
+  @keyframes fill-bar { to { width:27%; } }
+  .progress-fill::after {
+    content:''; position:absolute; right:0; top:0; bottom:0;
+    width:16px; background:rgba(255,255,255,.35); filter:blur(3px);
+    animation:shine-p 2s ease-in-out infinite;
+  }
+  @keyframes shine-p { 0%,100%{opacity:.5} 50%{opacity:1} }
 
-    .faq-question h3 {
-      font-size: 18px;
-      font-weight: 900;
-      color: #111;
-      margin: 0;
-      flex: 1;
-    }
+  /* ── STEPS ── */
+  .steps-wrap { padding:0 16px 22px; }
+  .steps-heading {
+    text-align:center;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700; font-size:clamp(11px,3vw,13px); letter-spacing:4px;
+    text-transform:uppercase; color:rgba(255,255,255,.4); margin-bottom:12px;
+  }
+  .steps-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .step {
+    display:flex; align-items:center; gap:12px;
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07);
+    border-radius:10px; padding:11px 14px;
+    opacity:0; transform:translateX(-16px);
+    animation:step-in .5s ease forwards;
+  }
+  .step:nth-child(1){animation-delay:.15s}
+  .step:nth-child(2){animation-delay:.28s}
+  .step:nth-child(3){animation-delay:.41s}
+  .step:nth-child(4){animation-delay:.54s}
+  .step:nth-child(5){animation-delay:.67s}
+  @keyframes step-in { to { opacity:1; transform:translateX(0); } }
+  .step-num {
+    width:30px; height:30px; border-radius:50%; flex-shrink:0;
+    background:linear-gradient(135deg, var(--green), var(--green-dark));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Bebas Neue',cursive; font-size:17px; color:#fff;
+    box-shadow:0 4px 14px rgba(0,99,65,.45);
+  }
+  .step-text {
+    font-size:clamp(13px,3.5vw,15px);
+    font-weight:600; color:rgba(255,255,255,.87); line-height:1.35;
+    flex:1; min-width:0;
+  }
+  .step-icon { font-size:clamp(15px,4vw,18px); flex-shrink:0; margin-left:auto; padding-left:6px; }
 
-    .faq-icon {
-      width: 22px;
-      height: 22px;
-      fill: #00A651;
-      transition: transform 0.3s ease;
-      flex-shrink: 0;
-    }
+  /* ── CTA ── */
+  .cta-wrap {
+    padding:6px 16px clamp(24px,6vw,40px);
+    text-align:center;
+  }
+  .cta-btn {
+    display:block; width:100%;
+    background:linear-gradient(135deg, var(--green-light) 0%, var(--green) 50%, var(--green-dark) 100%);
+    color:#fff; text-decoration:none;
+    font-family:'Bebas Neue',cursive;
+    font-size:clamp(24px,6vw,32px); letter-spacing:3px;
+    padding:clamp(16px,4vw,22px) 24px;
+    border-radius:10px;
+    border:2px solid rgba(255,184,28,.35);
+    position:relative; overflow:hidden;
+    box-shadow:0 8px 32px rgba(0,99,65,.55), 0 2px 8px rgba(0,0,0,.4),
+               inset 0 1px 0 rgba(255,255,255,.12);
+    transition:transform .15s, box-shadow .15s;
+    animation:cta-glow 2.2s ease-in-out infinite;
+    margin-bottom:12px;
+    /* prevent text selection on tap */
+    -webkit-user-select:none; user-select:none;
+    touch-action:manipulation;
+    cursor:pointer;
+  }
+  @keyframes cta-glow {
+    0%,100%{box-shadow:0 8px 32px rgba(0,99,65,.55),0 2px 8px rgba(0,0,0,.4)}
+    50%{box-shadow:0 12px 48px rgba(0,132,90,.75),0 4px 14px rgba(0,0,0,.5),0 0 0 3px rgba(255,184,28,.25)}
+  }
+  .cta-btn::before {
+    content:''; position:absolute; top:0; left:-120%; width:60%; height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);
+    animation:sweep 3.2s ease-in-out infinite;
+  }
+  @keyframes sweep { 0%{left:-120%} 45%,100%{left:160%} }
+  .cta-btn:active { transform:scale(.97); opacity:.9; }
+  @media (hover:hover) {
+    .cta-btn:hover { transform:translateY(-2px) scale(1.01); box-shadow:0 14px 52px rgba(0,132,90,.75); }
+  }
 
-    .faq-item.active .faq-icon {
-      transform: rotate(180deg);
-    }
+  .cta-note {
+    font-size:clamp(10px,2.8vw,12px); font-weight:700; letter-spacing:1px;
+    text-transform:uppercase; color:rgba(255,255,255,.4);
+    line-height:1.6;
+  }
+  .cta-note span { color:rgba(255,255,255,.62); }
 
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
+  /* ── TRUST ── */
+  .trust-row {
+    display:flex; justify-content:center; align-items:center;
+    gap:clamp(12px,4vw,24px); flex-wrap:wrap;
+    padding:0 16px clamp(20px,5vw,28px);
+  }
+  .trust-item {
+    display:flex; align-items:center; gap:5px;
+    font-size:clamp(10px,2.8vw,12px); font-weight:700; letter-spacing:1px;
+    text-transform:uppercase; color:rgba(255,255,255,.4);
+    white-space:nowrap;
+  }
 
-    .faq-item.active .faq-answer {
-      max-height: 500px;
-    }
+  /* ── FOOTER ── */
+  .footer {
+    text-align:center;
+    padding:16px 20px;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+    font-size:clamp(10px,2.5vw,11px); color:rgba(255,255,255,.18); line-height:2;
+    border-top:1px solid rgba(255,255,255,.05);
+  }
 
-    .faq-answer p {
-      padding: 0 20px 18px 20px;
-      color: #444;
-      font-size: 16px;
-      line-height: 1.6;
-      margin: 0;
-      font-weight: 600;
-    }
+  /* ── FLOATING ICONS ── */
+  .bg-float { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+  .bf { position:absolute; font-size:20px; opacity:0; animation:drift linear infinite; }
+  @keyframes drift {
+    0%  { transform:translateY(105vh) rotate(0deg); opacity:0 }
+    8%  { opacity:.05 }
+    92% { opacity:.05 }
+    100%{ transform:translateY(-80px) rotate(360deg); opacity:0 }
+  }
 
-    @media (max-width: 600px) {
-      body { padding: 12px 0; }
-      .title { font-size: 32px; letter-spacing: 0.5px; text-shadow: none; }
-      .title .line1 { font-size: 27px; }
-      .title .line2 { font-size: 32px; }
-      .btn { font-size: 22px; padding: 12px 32px; }
-      .steps { font-size: 18px; padding: 18px 14px; }
-      .giftcard { width: 95%; margin-bottom: 24px; }
+  /* ── SMALL PHONES (iPhone SE, 375px) ── */
+  @media (max-width:390px) {
+    .hero-badge { font-size:9px; letter-spacing:2px; padding:4px 10px; }
+    .step { padding:10px 12px; gap:10px; }
+    .step-num { width:28px; height:28px; font-size:15px; }
+    .timer-label { display:none; }
+  }
 
-      .faq-section {
-        width: 95%;
-        margin: 40px 0 30px;
-      }
+  /* ── LARGE PHONES / PHABLETS ── */
+  @media (min-width:430px) {
+    .live-counter { margin-left:24px; margin-right:24px; }
+    .progress-wrap, .steps-wrap, .cta-wrap { padding-left:24px; padding-right:24px; }
+  }
 
-      .faq-header h2 {
-        font-size: 24px;
-      }
-
-      .faq-question {
-        padding: 14px 16px;
-      }
-
-      .faq-question h3 {
-        font-size: 16px;
-        line-height: 1.3;
-      }
-
-      .faq-icon {
-        width: 18px;
-        height: 18px;
-      }
-
-      .faq-answer p {
-        padding: 0 16px 14px 16px;
-        font-size: 14px;
-      }
-    }
-  </style>
+  /* ── TABLETS & DESKTOP ── */
+  @media (min-width:640px) {
+    .wrap { padding:0 20px; }
+    .top-bar { border-radius:0; }
+    .live-counter { margin-left:0; margin-right:0; }
+    .progress-wrap, .steps-wrap, .cta-wrap, .trust-row { padding-left:0; padding-right:0; }
+  }
+</style>
 </head>
 <body>
 
-  <img src="logo.png" alt="Wingstop logo" class="logo">
+<div class="bg-float">
+  <div class="bf" style="left:4%;  animation-duration:14s; animation-delay:0s">🍗</div>
+  <div class="bf" style="left:22%; animation-duration:18s; animation-delay:3s">🍗</div>
+  <div class="bf" style="left:47%; animation-duration:11s; animation-delay:7s">🍗</div>
+  <div class="bf" style="left:68%; animation-duration:15s; animation-delay:1s">🍗</div>
+  <div class="bf" style="left:87%; animation-duration:12s; animation-delay:5s">🍗</div>
+</div>
 
-  <div class="title">
-    <span class="line1">Click Below to Claim Your</span>
-    <span class="line2">Wingstop Gift Card</span>
+<div class="wrap">
+
+  <div class="top-bar">⚡ Limited Gift Cards Available &nbsp;—&nbsp; <span class="gold">Offer Expires Soon</span> ⚡</div>
+
+  <div class="timer-bar">
+    <div class="blink-dot"></div>
+    <span class="timer-label">Reservation expires in</span>
+    <span class="timer-display" id="timer">15:00</span>
   </div>
 
-  <a href="https://glctrk.org/aff_c?offer_id=893&aff_id=3471" target="_blank" rel="noopener noreferrer" class="btn">
-    Start Earning Now 
-  </a>
+  <div class="hero">
+    <img class="wingstop-logo"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Wingstop_logo.svg/2560px-Wingstop_logo.svg.png"
+      alt="Wingstop"
+      onerror="this.style.display='none'">
+    <div class="hero-badge">🎁 Exclusive Reward — Today Only</div>
+    <div class="hero-title">Claim Your</div>
+    <span class="hero-amount">$500</span>
+    <div class="hero-subtitle">Wingstop Gift Card</div>
+  </div>
 
-  <div class="steps" aria-label="How it works">
-    <div class="step">
-      <div class="num">1</div>
-      <div>Click "<span class="bold"> Start Earning Now </span>" and answer a few basic questions</div>
+  <div class="card-wrap">
+    <div class="card-halo"></div>
+    <img class="card-img"
+      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/Untitled-design-3-1765878937787.png?width=8000&height=8000&resize=contain"
+      alt="$500 Wingstop Gift Card"
+      onerror="this.style.display='none'">
+  </div>
+
+  <div class="live-counter">
+    🔥 <span class="live-counter-text"><strong id="claim-count">1,247</strong> people claimed this today</span>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-labels">
+      <span>Cards Remaining</span>
+      <span>Only 27% left!</span>
     </div>
-    <div class="step">
-      <div class="num">2</div>
-      <div> Provide a valid  <span class="bold">email address </span> and complete <span class="bold">4-5</span> deals <span class="amount">(REQUIRED)</span></div>
-    </div>
-    <div class="step">
-      <div class="num">3</div>
-      <div> Receive Your Gift card!  <span class="bold"></span> <span class="amount"></span></div>
+    <div class="progress-track"><div class="progress-fill"></div></div>
+  </div>
+
+  <div class="steps-wrap">
+    <div class="steps-heading">How to claim</div>
+    <ul class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <span class="step-text">Click the "Start Review" button below</span>
+        <span class="step-icon">👇</span>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <span class="step-text">Enter your email and basic details</span>
+        <span class="step-icon">📧</span>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <span class="step-text">Answer the required questions</span>
+        <span class="step-icon">✅</span>
+      </li>
+      <li class="step">
+        <div class="step-num">4</div>
+        <span class="step-text">Complete 4–5 partner offers</span>
+        <span class="step-icon">🎯</span>
+      </li>
+      <li class="step">
+        <div class="step-num">5</div>
+        <span class="step-text">Receive your $500 Wingstop gift card!</span>
+        <span class="step-icon">🎁</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="cta-wrap">
+    <a href="https://glctrk.org/aff_c?offer_id=893&aff_id=3471" class="cta-btn">
+      🍗 &nbsp;START REVIEW →
+    </a>
+    <div class="cta-note">
+      <span>✓ Instant approval</span> &nbsp;·&nbsp; <span>✓ No purchase required</span>
     </div>
   </div>
 
-  <p style="font-size: 13px; color: #777; text-align: center; margin-top: -30px; margin-bottom: 40px; font-weight: 600; letter-spacing: 0.3px;">Limited time offer. Terms and conditions apply.</p>
-
-  <!-- FAQ Section -->
-  <div class="faq-section">
-    <div class="faq-header">
-      <h2>FREQUENTLY ASKED QUESTIONS</h2>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        <h3>What are Deals?</h3>
-        <svg class="faq-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-        </svg>
-      </button>
-      <div class="faq-answer">
-        <p>Deals are simple tasks you complete to earn rewards. This could be downloading an app, completing a survey, or signing up for a trial subscription using the links provided. Each deal has specific steps—once you reach the required level or complete the task, you'll earn a reward.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        <h3>How many Deals do I need to complete?</h3>
-        <svg class="faq-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-        </svg>
-      </button>
-      <div class="faq-answer">
-        <p>To qualify for your Wingstop gift card, you'll need to complete 4-5 deals to unlock the full $500 gift card value. Make sure you finish all the required deals from start to finish. The more deals you complete, the closer you get to your full reward.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        <h3>What countries is this available in?</h3>
-        <svg class="faq-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-        </svg>
-      </button>
-      <div class="faq-answer">
-        <p>This offer is available in the United States, Canada, Australia, and the United Kingdom.</p>
-      </div>
-    </div>
+  <div class="trust-row">
+    <div class="trust-item">🔒 Secure &amp; Safe</div>
+    <div class="trust-item">⚡ Instant Access</div>
   </div>
 
-  <img src="giftcard.png" alt="Wingstop Gift Card" class="giftcard">
+  <div class="footer">
+    © 2025 All rights reserved<br>
+    This is a promotional offer. Completing all required steps is necessary to receive reward.
+  </div>
 
-  <script>
-    function toggleFaq(button) {
-      const faqItem = button.parentElement;
-      const wasActive = faqItem.classList.contains('active');
-      
-      // Close all FAQ items
-      document.querySelectorAll('.faq-item').forEach(item => {
-        item.classList.remove('active');
-      });
-      
-      // Open clicked item if it wasn't active
-      if (!wasActive) {
-        faqItem.classList.add('active');
-      }
+</div>
+
+<script>
+  // ── 15-min countdown ──
+  let secs = 15 * 60;
+  const el = document.getElementById('timer');
+  (function tick() {
+    if (secs <= 0) { el.textContent = '00:00'; return; }
+    secs--;
+    const m = String(Math.floor(secs / 60)).padStart(2, '0');
+    const s = String(secs % 60).padStart(2, '0');
+    el.textContent = m + ':' + s;
+    if (secs <= 120) el.style.color = '#FF4D2E';
+    setTimeout(tick, 1000);
+  })();
+
+  // ── Live counter ──
+  const cEl = document.getElementById('claim-count');
+  let count = 1247;
+  setInterval(function() {
+    if (Math.random() < 0.35) {
+      count += Math.floor(Math.random() * 3) + 1;
+      cEl.textContent = count.toLocaleString();
     }
-  </script>
-
+  }, 4000);
+</script>
 </body>
 </html>
